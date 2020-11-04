@@ -378,18 +378,18 @@ for(i in 1:nrow(complex_file))
           {
             complex_expression2 <- c(complex_expression2, complex_name)#complexes for which expression calculation makes sense
             
-#            network <- network_dbnR(sub_exp_names, length(timepoints))
+            network <- network_dbnR(sub_exp_names, length(timepoints))
             
-#            if(is.list(network))
-#            {
-#              complex_network <- c(complex_network, complex_name) #complexes for which netwroks were built
-#              all_results[[complex_name]][["dbnR"]] <- network
-#              counter7 = counter7 + 1 #number of complexes for which dbns formed
-#            }
-#           else
-#            {
-#              counter6 = counter6 + 1 # number of complexes for which dbn not formed, because no connection could be predicted
-#            }
+            if(is.list(network))
+            {
+              complex_network <- c(complex_network, complex_name) #complexes for which netwroks were built
+              all_results[[complex_name]][["dbnR"]] <- network
+              counter7 = counter7 + 1 #number of complexes for which dbns formed
+            }
+           else
+            {
+              counter6 = counter6 + 1 # number of complexes for which dbn not formed, because no connection could be predicted
+            }
           }
           else
           {
@@ -462,7 +462,7 @@ for(cmplx in complex_expression)
     labs(title = "", x ="" , y="FPKM", fill = "Type")
   
   p_grid <- grid.arrange(p, layout_matrix = rbind(c(1)))
-  ggsave(file=paste("bnstruct/", cmplx, "_", naam, "_expr", ".jpeg", sep=""), plot = p, device = NULL, path = NULL, scale = 1, width = 10, height = 4, units = "in", dpi = 200, limitsize = TRUE) 
+  ggsave(file=paste("results/", cmplx, "_", naam, "_expr", ".jpeg", sep=""), plot = p, device = NULL, path = NULL, scale = 1, width = 10, height = 4, units = "in", dpi = 200, limitsize = TRUE) 
 }
 
 #Making network images
@@ -492,7 +492,6 @@ for(cmplx in complex_network)
     plot(graph_adj_mat)
     dev.off()
 	}
-#  Sys.sleep(10)
 }
 
 aa = bb = cc = 0
